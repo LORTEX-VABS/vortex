@@ -365,13 +365,12 @@ export default function TryPage() {
 		setTick(null);
 		setTickCount(0);
 
-		const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+		const base = (
+			process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+		).trim().replace(/\/+$/, "");
 
 		const url =
-			`${base} /api/stream ? exchange = ${exchange}& pair=${encodeURIComponent(
-				pair
-			)
-			} `;
+			`${base}/api/stream?exchange=${exchange}&pair=${encodeURIComponent(pair)}`;
 
 		const es = new EventSource(url);
 
