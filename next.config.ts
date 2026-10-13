@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // The site lives at projects.vedantshukla.in/streamex-sdk. The hub project rewrites that path here.
   basePath: "/streamex-sdk",
-
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/streamex-sdk",
+  },
+  
   webpack: (config) => {
     config.externals.push({
       'streamex-sdk': 'commonjs streamex-sdk',

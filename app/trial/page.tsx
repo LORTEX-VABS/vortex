@@ -365,10 +365,13 @@ export default function TryPage() {
 		setTick(null);
 		setTickCount(0);
 
+		const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 		const url =
-			`/api/stream?exchange=${exchange}&pair=${encodeURIComponent(
+			`${base} /api/stream ? exchange = ${exchange}& pair=${encodeURIComponent(
 				pair
-			)}`;
+			)
+			} `;
 
 		const es = new EventSource(url);
 
@@ -699,7 +702,7 @@ export default function TryPage() {
 														"20",
 													color:
 														exchObj?.color,
-													border: `1px solid ${exchObj?.color}40`,
+													border: `1px solid ${exchObj?.color} 40`,
 													fontFamily:
 														"var(--font-mono,'IBM Plex Mono',monospace)",
 												}}
